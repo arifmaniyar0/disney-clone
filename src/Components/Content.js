@@ -18,7 +18,7 @@ export default function Content() {
                     list && list.map(l => (
                         <Card key={l._id} style={{backgroundImage: `url(${img1})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
                             <div>
-                                {l.name}
+                                {l.films.length > 0 ? l.films[0] : l.name}
                             </div>
                         </Card>
                     ))
