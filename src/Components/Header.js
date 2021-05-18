@@ -4,7 +4,7 @@ import {auth, googleAuthProvider } from '../firebase'
 import { useSelector, useDispatch } from 'react-redux'
 
 export default function Header() {
-    const [loading, setLoading] = useState(true);
+
     const [User, setUser] = useState();
 
     const state = useSelector(s => s);
@@ -18,17 +18,8 @@ export default function Header() {
                 setUser(user)
             }
             dispatch({ type: 'User', payload: user })
-            setLoading(false)
         })
     },[User])
-
-    // if(loading) {
-    //     return (
-    //         <Loader>
-    //             <LoaderIcon />
-    //         </Loader>
-    //     )
-    // }
 
     const loginClick = () => {
         auth.onAuthStateChanged(user => {
@@ -41,6 +32,7 @@ export default function Header() {
         })
     }
 
+
     const toggleSignOut = () => {
         console.log(document.getElementById('signoutbtn').style.display)
         document.getElementById('signoutbtn').style.display === 'block' ?
@@ -48,11 +40,7 @@ export default function Header() {
         document.getElementById('signoutbtn').style.display = 'block'
     }
     return (
-        loading ? 
-        <Loader>
-            <LoaderIcon />
-        </Loader>
-        :
+        
         <Container>
             <Logo src={'https://cdn.worldvectorlogo.com/logos/disney-wbackground.svg'} width={90}></Logo>
             <MenuBar>
@@ -84,12 +72,11 @@ padding: 0.7rem 2rem;
 box-shadow: 1px 1px #a2a2a2;
 box-sizing: border-box;
 width: 100vw;
-
 `
 
 const Logo = styled.img`
 @media(max-width: 720px) {
-    width: 50
+    width: 50;
 }`
 const MenuBar = styled.div`
 display: grid;
@@ -97,8 +84,23 @@ align-items: center;
 grid-auto-flow: column;
 justify-self: flex-start;
 grid-gap: 2rem;
+position:relative;
+
 h3 {
     font-weight: 300;
+    cursor: pointer;
+
+    &:hover {
+        text-shadow: 0px 0px white;
+    }
+}
+
+h3:last-child {
+    color: #db882a;
+    font-weight: bold;
+    // transform: skew(10deg);
+    letter-spacing: 1px;
+    font-family: cursive;
 }
 @media(max-width: 720px) {
     display: none
@@ -125,37 +127,13 @@ const UserImage = styled.img`
 width: 40px;
 height: 40px;
 border-radius: 50%;
-`
+border: 1px solid black;
 
-const Loader = styled.div`
-display: grid;
-place-items: center;
-width: 100vw;
-height: 100vh;
-background-color: gray;
-background-color: #020917;
-overflow: hidden;
-`
-
-const LoaderIcon = styled.span`
-border: 10px solid white;
-border-bottom-color: red;
-background-color: #020917;
-width: 100px;
-height: 100px;
-border-radius: 50%;
-animation: spinner 1.4s linear infinite;
-trnsition: all 0.4s linear;
-
-@keyframes spinner {
-    from {
-        transform: rotate(0deg)
-    }
-    to {
-        transform: rotate(360deg)
-    }
+&:hover {
+    border: 1px solid #345343;
 }
 `
+
 
 const UserContainer = styled.div`
     position: relative;

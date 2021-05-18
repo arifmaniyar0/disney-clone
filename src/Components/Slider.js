@@ -42,6 +42,8 @@ box-sizing: border-box;
 margin-bottom: 40px;
 `
 const Carousel = styled(Slider)`
+margin: 5px 0;
+
 `
 const ImageContainer = styled.div`
 max-width: 400px;
@@ -50,7 +52,7 @@ width: 100vw;
 
 const SliderImage = styled.img`
 width: 100vw;
-max-height: 300px;
+max-height: 400px;
 object-fit: cover;
 background-position: center;
 @media(max-width: 720px) {
