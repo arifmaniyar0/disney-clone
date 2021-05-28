@@ -15,10 +15,9 @@ export default function Home() {
             <Header />
             {/* <div>assfks hawdaklkashfksjdhkjsdglskedsa</div> */}
             <Slider />
+            
             <Content />
-            <div data-aos="fade-right" style={{padding: '20px', width: '50%', fontSize: '2rem', textAlign: 'center', border: '2px solid white'}}>
-                test sdfsd
-            </div>
+            
         </Container>
     )
 }
